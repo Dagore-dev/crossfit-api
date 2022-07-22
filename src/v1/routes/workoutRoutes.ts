@@ -4,7 +4,7 @@ export const router = express.Router()
 
 router
   .get('/', getAllWorkouts)
+  .post('/', createWorkout)
   .get('/:workoutId', getWorkoutById)
-  .post('/:workoutId', createWorkout)
   .patch('/:workoutId', updateWorkoutById)
   .delete('/:workoutId', deleteWorkoutById)

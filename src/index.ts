@@ -7,6 +7,7 @@ dotenv.config()
 const app = express()
 const PORT: string = process.env.PORT ?? '3000'
 
+app.use(express.json())
 app.use('/api/v1/workouts', v1WorkoutRoutes)
 
 app.listen(PORT, () => {

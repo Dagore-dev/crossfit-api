@@ -1,17 +1,29 @@
 import * as Workout from '../database/Workout'
+import { v4 as uuid } from 'uuid'
 
-function getAllWorkouts (): object {
+function getAllWorkouts (): Workout.Workouts {
   const allWorkouts = Workout.getAllWorkouts()
   return allWorkouts
 }
 
-function getWorkoutById (id: string): object|undefined {
+function getWorkoutById (id: string): Workout.Workout|undefined {
   const workout = Workout.getWorkoutById(id)
   return workout
 }
 
-function createWorkout (id: string): object {
-  return {}
+function createWorkout (newWorkout: Workout.Workout): Workout.Workout|undefined {
+  const workoutToInsert: Workout.Workout = {
+    ...newWorkout,
+    id: uuid(),
+    createdAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' }),
+    updatedAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
+  }
+
+  const ok = Workout.createWorkout(workoutToInsert)
+
+  if (ok) {
+    return workoutToInsert
+  }
 }
 
 function updateWorkoutById (id: string): object {
