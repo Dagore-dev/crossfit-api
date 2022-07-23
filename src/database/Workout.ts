@@ -22,8 +22,7 @@ function getWorkoutById (id: string): Workout|undefined {
 }
 
 function createWorkout (newWorkout: Workout): boolean {
-  const index = db.workouts.findIndex(workout => workout.name === newWorkout.name)
-  const isAlreadyAdded = index !== -1
+  const isAlreadyAdded = db.workouts.some(workout => workout.name === newWorkout.name)
 
   if (isAlreadyAdded) {
     return false
@@ -35,8 +34,14 @@ function createWorkout (newWorkout: Workout): boolean {
   return true
 }
 
+function deleteWorkoutById (id: string): void {
+  const filteredDB = db.workouts.filter(workout => workout.id !== id)
+  saveToDatabase({ workouts: filteredDB })
+}
+
 export {
   getAllWorkouts,
   getWorkoutById,
-  createWorkout
+  createWorkout,
+  deleteWorkoutById
 }

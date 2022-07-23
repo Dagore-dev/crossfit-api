@@ -44,8 +44,13 @@ function updateWorkoutById (request: express.Request, response: express.Response
 }
 
 function deleteWorkoutById (request: express.Request, response: express.Response): void {
-  // const isDeleted = services.deleteWorkoutById(request.params.workoutId)
-  response.send(`Delete workout = ${request.params.workoutId}`)
+  const workout = services.deleteWorkoutById(request.params.workoutId)
+
+  if (workout !== undefined) {
+    response.status(200).send({ status: 'OK', data: workout })
+  } else {
+    response.status(409).send({ status: 'ERROR', message: `Workout with id ${request.params.workoutId} seems not to be stored in database ` })
+  }
 }
 
 export {

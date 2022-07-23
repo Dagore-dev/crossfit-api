@@ -30,8 +30,14 @@ function updateWorkoutById (id: string): object {
   return {}
 }
 
-function deleteWorkoutById (id: string): boolean {
-  return true
+function deleteWorkoutById (id: string): Workout.Workout|undefined {
+  const workoutToDelete = getWorkoutById(id)
+
+  if (workoutToDelete !== undefined) {
+    Workout.deleteWorkoutById(id)
+  }
+
+  return workoutToDelete
 }
 
 export {
