@@ -26,8 +26,19 @@ function createWorkout (newWorkout: Workout.Workout): Workout.Workout|undefined 
   }
 }
 
-function updateWorkoutById (id: string): object {
-  return {}
+function updateWorkoutById (id: string, updatedWorkout: Workout.Workout, createdAt: string): Workout.Workout|undefined {
+  const update = {
+    ...updatedWorkout,
+    id,
+    createdAt,
+    updatedAt: new Date().toLocaleString('en-US', { timeZone: 'UTC' })
+  }
+
+  const ok = Workout.updatedWorkoutById(id, update)
+
+  if (ok) {
+    return update
+  }
 }
 
 function deleteWorkoutById (id: string): Workout.Workout|undefined {

@@ -1,5 +1,5 @@
 import db from './db.json'
-import { saveToDatabase } from './utils'
+import { saveToDatabase, isNewNameInUseInOtherWorkout } from './utils'
 export type Workouts = typeof db
 export interface Workout {
   id: string
@@ -34,6 +34,25 @@ function createWorkout (newWorkout: Workout): boolean {
   return true
 }
 
+function updatedWorkoutById (id: string, update: Workout): boolean {
+  const haveConflict = isNewNameInUseInOtherWorkout(db, id, update.name)
+
+  if (haveConflict) {
+    return false
+  }
+
+  const updatedDB = db.workouts.map(workout => {
+    if (workout.id === update.id) {
+      return update
+    } else {
+      return workout
+    }
+  })
+
+  saveToDatabase({ workouts: updatedDB })
+  return true
+}
+
 function deleteWorkoutById (id: string): void {
   const filteredDB = db.workouts.filter(workout => workout.id !== id)
   saveToDatabase({ workouts: filteredDB })
@@ -43,5 +62,6 @@ export {
   getAllWorkouts,
   getWorkoutById,
   createWorkout,
+  updatedWorkoutById,
   deleteWorkoutById
 }

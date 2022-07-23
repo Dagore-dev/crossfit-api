@@ -6,5 +6,5 @@ router
   .get('/', getAllWorkouts)
   .post('/', createWorkout)
   .get('/:workoutId', getWorkoutById)
-  .patch('/:workoutId', updateWorkoutById)
+  .put('/:workoutId', updateWorkoutById)
   .delete('/:workoutId', deleteWorkoutById)

@@ -63,6 +63,30 @@
         "The first three rounds might feel terrible, but stick to it",
         "RX Weights: 205lb/145lb"
       ]
+    },
+    {
+      "id": "29056e23-3692-4781-b0cf-4fe0bcc27c35",
+      "createdAt": "7/23/2022, 3:28:30 PM",
+      "updatedAt": "7/23/2022, 3:35:05 PM",
+      "name": "Tommy V actualizado",
+      "mode": "For Time updated",
+      "equipment": [
+        "barbell",
+        "rope"
+      ],
+      "exercises": [
+        "21 thrusters",
+        "12 rope climbs, 15 ft",
+        "15 thrusters",
+        "9 rope climbs, 15 ft",
+        "9 thrusters",
+        "6 rope climbs, 15 ft"
+      ],
+      "trainerTips": [
+        "Split the 21 thrusters as needed",
+        "Try to do the 9 and 6 thrusters unbroken",
+        "RX Weights: 115lb/75lb"
+      ]
     }
   ]
 }
